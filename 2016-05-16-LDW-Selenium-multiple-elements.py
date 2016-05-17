@@ -3,6 +3,9 @@ import unittest
 
 
 class TestMultipleElements(unittest.TestCase):
+    """
+    Unittest to check functionality of multiple elements on the Wikipedia frontpage.
+    """
 
     def setUp(self):
         # Define driver
@@ -11,6 +14,9 @@ class TestMultipleElements(unittest.TestCase):
         self.driver.maximize_window()
 
     def test_lang_dropdown(self):
+        """
+        Finds the language dropdown box and prints the selection.
+        """
         driver = self.driver
         dropdown_languages = driver.find_elements_by_tag_name('option')
         for lang in dropdown_languages:
@@ -20,12 +26,19 @@ class TestMultipleElements(unittest.TestCase):
         print('===================')
 
     def test_num_links(self):
+        """
+        Prints the total number of links on the front page.
+        """
         driver = self.driver
         all_links = driver.find_elements_by_tag_name('a')
         print(len(all_links), 'links on front page ✓')
         print('===================')
 
     def test_wikimedia_links(self):
+        """
+        Prints the wikimedia links from the "otherprojects" wikipedia class.
+        Exception thrown if number of links != 12
+        """
         driver = self.driver
 
         # Find Wikimedia class div elements
